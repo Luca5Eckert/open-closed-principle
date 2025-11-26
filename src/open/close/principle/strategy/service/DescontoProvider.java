@@ -2,7 +2,6 @@ package open.close.principle.strategy.service;
 
 import open.close.principle.strategy.model.desconto.*;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class DescontoProvider {
@@ -13,7 +12,6 @@ public class DescontoProvider {
             TipoDesconto.SAZONAL, new DescontoSazonal(),
             TipoDesconto.VIP, new DescontoVip()
     );
-
 
     public static Desconto toInstance(TipoDesconto tipoDesconto){
         return descontos.get(tipoDesconto);

@@ -2,9 +2,6 @@ package open.close.principle.strategy.model;
 
 import open.close.principle.strategy.model.desconto.TipoDesconto;
 
-/**
- *
- */
 public class Pedido {
 
     private String id;
