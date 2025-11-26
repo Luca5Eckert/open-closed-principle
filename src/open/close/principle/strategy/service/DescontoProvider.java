@@ -2,20 +2,21 @@ package open.close.principle.strategy.service;
 
 import open.close.principle.strategy.model.desconto.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DescontoProvider {
 
-    private final static Desconto DESCONTO_VIP = new DescontoVip();
-    private final static Desconto DESCONTO_CUPOM = new DescontoCupom();
-    private final static Desconto DESCONTO_SAZONAL = new DescontoSazonal();
-    private final static Desconto DESCONTO_ANIVERSARIO = new DescontoAniversario();
+    public final static Map<TipoDesconto, Desconto> descontos = Map.of(
+            TipoDesconto.CUPOM, new DescontoCupom(),
+            TipoDesconto.ANIVERSARIO, new DescontoAniversario(),
+            TipoDesconto.SAZONAL, new DescontoSazonal(),
+            TipoDesconto.VIP, new DescontoVip()
+    );
+
 
     public static Desconto toInstance(TipoDesconto tipoDesconto){
-        return switch (tipoDesconto){
-            case CUPOM -> DESCONTO_CUPOM;
-            case VIP -> DESCONTO_VIP;
-            case SAZONAL -> DESCONTO_SAZONAL;
-            case ANIVERSARIO -> DESCONTO_ANIVERSARIO;
-        };
+        return descontos.get(tipoDesconto);
     }
 
 }
